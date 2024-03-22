@@ -2,7 +2,7 @@
   <mat-form-field appearance="outline" class="mult">
     <mat-label>Games</mat-label>
 
-    <mat-select [formControl]="toppings" multiple>
+    <mat-select [formControl]="toppings" multiple (selectionChange)="selectOn($event)">
       <div class="input-search">
         <mat-checkbox
           class="example-margin"
@@ -14,15 +14,16 @@
         <input
           class="search"
           type="search"
-          (keyup)="search($event)"
+          (keyup)="search()"
           [formControl]="searchText"
           placeholder="Pesquisar..."
         />
       </div>
-
+     
       @for (topping of gamesList; track topping) {
-      <mat-option [value]="topping">{{ topping }}</mat-option>
+      <mat-option [value]="topping" >{{ topping }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
+  {{toppings.value}}
 </section>
